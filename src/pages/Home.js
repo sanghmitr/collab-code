@@ -78,7 +78,8 @@ const Home = () => {
         </div>
         <footer>
           <h4>
-            Built with 💛&nbsp; by &nbsp;
+            // Built with 💛&nbsp; by &nbsp;
+            Developed by &nbsp;
             <a onClick={() => openInNewTab("https://github.com/sanghmitr")}>
               {" "}
               Sanghmitr{" "}
