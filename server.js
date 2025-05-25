@@ -4,10 +4,19 @@ const http = require('http');
 const path = require('path');
 const { Server } = require('socket.io');
 const ACTIONS = require('./src/Actions');
+const cors = require('cors');
 
 const server = http.createServer(app);
-const io = new Server(server);
+const io = new Server(server, {
+  cors: {
+    origin: process.env.NODE_ENV === 'production' 
+      ? ['https://collab-code.vercel.app', 'https://collab-code-sanghmitr.vercel.app']
+      : 'http://localhost:3000',
+    methods: ['GET', 'POST']
+  }
+});
 
+app.use(cors());
 app.use(express.static('build'));
 app.use((req, res, next) => {
     res.sendFile(path.join(__dirname, 'build', 'index.html'));
